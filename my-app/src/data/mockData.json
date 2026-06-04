@@ -1,0 +1,42 @@
+{
+  "senior": {
+    "name": "Eleanor",
+    "age": 82
+  },
+  "family": {
+    "name": "Sarah",
+    "email": "sarah@example.com"
+  },
+  "medicines": [
+    { "id": 1, "name": "Lisinopril", "dosage": "10mg", "time": "08:00 AM", "taken": true },
+    { "id": 2, "name": "Metformin", "dosage": "500mg", "time": "12:00 PM", "taken": false },
+    { "id": 3, "name": "Amlodipine", "dosage": "5mg", "time": "02:00 PM", "taken": false },
+    { "id": 4, "name": "Atorvastatin", "dosage": "20mg", "time": "06:00 PM", "taken": false },
+    { "id": 5, "name": "Aspirin", "dosage": "81mg", "time": "08:00 PM", "taken": false }
+  ],
+  "tasks": [
+    { "id": 1, "title": "Drink 2 glasses of water", "assignee": "Sarah", "dueDate": "Today", "completed": true },
+    { "id": 2, "title": "15 min light walking", "assignee": "Sarah", "dueDate": "Today", "completed": false },
+    { "id": 3, "title": "Read a book chapter", "assignee": "David", "dueDate": "Today", "completed": false },
+    { "id": 4, "title": "Call grandkids", "assignee": "Sarah", "dueDate": "Tomorrow", "completed": false }
+  ],
+  "alerts": [
+    { "id": 1, "category": "Emergency", "message": "Help button pressed", "timestamp": "2 hours ago", "resolved": false },
+    { "id": 2, "category": "Medication", "message": "Missed afternoon dose", "timestamp": "Yesterday", "resolved": true },
+    { "id": 3, "category": "Health", "message": "Mood reported as 'Bad'", "timestamp": "2 days ago", "resolved": true },
+    { "id": 4, "category": "Task", "message": "Physical therapy missed", "timestamp": "3 days ago", "resolved": true },
+    { "id": 5, "category": "Medication", "message": "Refill needed for Lisinopril", "timestamp": "4 days ago", "resolved": false }
+  ],
+  "moodHistory": [
+    { "date": "Mon", "score": 4 },
+    { "date": "Tue", "score": 3 },
+    { "date": "Wed", "score": 5 },
+    { "date": "Thu", "score": 4 },
+    { "date": "Fri", "score": 2 },
+    { "date": "Sat", "score": 4 },
+    { "date": "Sun", "score": 5 }
+  ],
+  "checkIns": [
+    { "date": "Today", "time": "09:00 AM", "mood": "Great" }
+  ]
+}

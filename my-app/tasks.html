@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Today's Tasks - Gentle Guardian</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed-dim": "#95d4b3",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-container": "#a8e7c5",
+                    "background": "#fdf9f4",
+                    "surface": "#fdf9f4",
+                    "inverse-on-surface": "#f4f0eb",
+                    "primary": "#0f5238",
+                    "surface-container-high": "#ebe8e3",
+                    "primary-fixed": "#b1f0ce",
+                    "on-secondary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "on-surface": "#1c1c19",
+                    "secondary-container": "#92f7c3",
+                    "primary-container": "#2d6a4f",
+                    "on-background": "#1c1c19",
+                    "surface-container": "#f1ede8",
+                    "on-primary-fixed-variant": "#0e5138",
+                    "on-error-container": "#93000a",
+                    "surface-dim": "#ddd9d5",
+                    "on-secondary-fixed": "#002113",
+                    "error": "#ba1a1a",
+                    "surface-tint": "#2c694e",
+                    "surface-bright": "#fdf9f4",
+                    "error-container": "#ffdad6",
+                    "tertiary": "#713638",
+                    "on-primary": "#ffffff",
+                    "outline": "#707973",
+                    "outline-variant": "#bfc9c1",
+                    "on-primary-fixed": "#002114",
+                    "tertiary-fixed-dim": "#ffb3b3",
+                    "on-secondary-fixed-variant": "#005235",
+                    "tertiary-container": "#8d4d4e",
+                    "secondary-fixed": "#92f7c3",
+                    "on-tertiary-fixed-variant": "#6f3537",
+                    "surface-container-highest": "#e6e2dd",
+                    "secondary": "#006c48",
+                    "on-tertiary-container": "#ffcfce",
+                    "tertiary-fixed": "#ffdad9",
+                    "inverse-primary": "#95d4b3",
+                    "surface-variant": "#e6e2dd",
+                    "on-secondary-container": "#00734d",
+                    "on-tertiary-fixed": "#390b0e",
+                    "surface-container-low": "#f7f3ee",
+                    "on-surface-variant": "#404943",
+                    "secondary-fixed-dim": "#75daa8",
+                    "on-tertiary": "#ffffff",
+                    "inverse-surface": "#31302d"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "1.5rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Plus Jakarta Sans"],
+                    "body": ["Plus Jakarta Sans"],
+                    "label": ["Plus Jakarta Sans"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+            vertical-align: middle;
+        }
+        .huge-icon { font-size: 3rem !important; }
+        .task-card-active { border-left: 12px solid #0f5238; }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- Side Navigation Shell -->
+<aside class="h-screen w-80 fixed left-0 top-0 overflow-y-auto bg-[#f7f3ee] dark:bg-stone-900 flex flex-col gap-y-2 p-8 h-full">
+<div class="mb-10">
+<h1 class="text-2xl font-extrabold text-[#0f5238] dark:text-[#b7e4c7] italic">Gentle Guardian</h1>
+<p class="text-stone-600 dark:text-stone-400 font-['Plus_Jakarta_Sans'] text-base tracking-tight">Family Dashboard</p>
+</div>
+<nav class="flex flex-col gap-y-2 flex-grow">
+<!-- Active State: Calendar (closest to Tasks) -->
+<a class="text-stone-600 dark:text-stone-400 px-4 py-3 hover:bg-[#ebe8e3] dark:hover:bg-stone-800 transition-all duration-300 rounded-xl flex items-center gap-4" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Overview</span>
+</a>
+<a class="text-stone-600 dark:text-stone-400 px-4 py-3 hover:bg-[#ebe8e3] dark:hover:bg-stone-800 transition-all duration-300 rounded-xl flex items-center gap-4" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span>Care Circle</span>
+</a>
+<a class="text-stone-600 dark:text-stone-400 px-4 py-3 hover:bg-[#ebe8e3] dark:hover:bg-stone-800 transition-all duration-300 rounded-xl flex items-center gap-4" href="#">
+<span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
+<span>Health Tracker</span>
+</a>
+<a class="text-stone-600 dark:text-stone-400 px-4 py-3 hover:bg-[#ebe8e3] dark:hover:bg-stone-800 transition-all duration-300 rounded-xl flex items-center gap-4" href="#">
+<span class="material-symbols-outlined" data-icon="pill">pill</span>
+<span>Medications</span>
+</a>
+<a class="text-[#0f5238] dark:text-[#b7e4c7] font-bold bg-[#ebe8e3] dark:bg-stone-800 rounded-xl px-4 py-3 ml-[-8px] flex items-center gap-4 scale-98 active transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="event">event</span>
+<span>Calendar</span>
+</a>
+<a class="text-stone-600 dark:text-stone-400 px-4 py-3 hover:bg-[#ebe8e3] dark:hover:bg-stone-800 transition-all duration-300 rounded-xl flex items-center gap-4" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="mt-auto p-4 bg-surface-container-high rounded-xl">
+<div class="flex items-center gap-3">
+<img alt="Family caregiver profile" class="w-12 h-12 rounded-full object-cover" data-alt="Close-up portrait of a kind, smiling middle-aged female caregiver in a warm sunlit room, professional and friendly aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDrnhu4nYDwmIGUr6573YFZ7l3mlRXWtw0dBX1Nr3KQc6Fd37mdPQQU2ytqj90Z27LL_ekUFOlgFBDGnBfcFCqge7hDDonAjBCyDA_AyYtWBSdf7DQ1UqBlEFxzYu4uubaAHniOj7c87C7FluIVhPtCmyMx9KOu8Xf9QzUVknRRZ5W0tCmq5TbC_q-I66-ALd1uIaR_y-xJ5N1CinYgYYOQGJbxInb_ZP4hv-TQbtfaZ3SRnU4DwocHffMAJZ2S75lf1qbjiwtZ6o"/>
+<div>
+<p class="font-bold text-sm">Log Update</p>
+<p class="text-xs text-on-surface-variant">Last entry: 2h ago</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Top Navigation Shell -->
+<header class="fixed top-0 right-0 w-[calc(100%-20rem)] z-40 bg-[#fdf9f4]/80 dark:bg-stone-950/80 backdrop-blur-xl flex justify-between items-center h-20 px-10">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold text-[#0f5238] dark:text-[#b7e4c7]">Gentle Guardian</span>
+<div class="bg-surface-container-high px-6 py-2 rounded-full flex items-center gap-3 focus-within:ring-2 focus-within:ring-[#2d6a4f]/20 transition-all">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 font-medium text-on-surface w-64" placeholder="Search tasks..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="hover:bg-stone-100 dark:hover:bg-stone-800 rounded-full p-2 transition-all">
+<span class="material-symbols-outlined text-[#0f5238]" data-icon="notifications">notifications</span>
+</button>
+<button class="hover:bg-stone-100 dark:hover:bg-stone-800 rounded-full p-2 transition-all">
+<span class="material-symbols-outlined text-[#0f5238]" data-icon="help_outline">help_outline</span>
+</button>
+<button class="bg-error text-on-error px-6 py-2 rounded-full font-bold shadow-lg hover:scale-105 active:scale-95 transition-all">
+                Emergency SOS
+            </button>
+<div class="w-10 h-10 rounded-full bg-primary overflow-hidden">
+<img alt="Senior user profile" class="w-full h-full object-cover" data-alt="Gentle portrait of an elderly man with silver hair and warm eyes, soft natural lighting, high-end editorial photography style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDU4FM2Tkd-mNPga08Pl3pHjCRcjmA7rO6ys12sm1P1wvoQc4TELFH9bYR1MGziUWiOqb8V44XhXLsm1-HWr4OJlmWNQHIE74XgYZ52AgrovccYaIIjGrJFcq7d8VxBes--A0Jiu0Q_ICSLBiPR-AtcqT1O0iQOaDa8zxAMbd5RqY54L8hZyQ1a42I2BofVV9sef1k11zhK_IxkAzGM-XS0VwXA_UkCBdC7si269mSVpzj4rB9d3KU3Nk5YhtRgLJH-migSovx-RNk"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-80 pt-28 pb-12 px-10 flex flex-col items-center max-w-7xl mx-auto">
+<!-- Header Section -->
+<div class="w-full mb-12 text-center md:text-left">
+<p class="text-secondary font-bold tracking-widest uppercase text-sm mb-2">Daily Coordination</p>
+<h2 class="text-6xl font-extrabold text-primary leading-tight -tracking-[0.03em]">Today's Tasks</h2>
+<div class="flex items-center gap-4 mt-4 text-on-surface-variant text-xl">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span>Monday, October 24th</span>
+<span class="mx-2">•</span>
+<span class="font-bold text-primary">2 tasks remaining</span>
+</div>
+</div>
+<!-- Task Bento/Grid Area -->
+<div class="w-full grid grid-cols-1 gap-8">
+<!-- Task Card 1 -->
+<div class="bg-surface-container-lowest rounded-xl p-10 task-card-active flex flex-col md:flex-row items-center justify-between gap-8 shadow-[0_10px_30px_rgba(28,28,25,0.05)] transition-transform hover:translate-y-[-4px]">
+<div class="flex items-center gap-10 flex-1">
+<div class="w-32 h-32 rounded-full bg-primary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined huge-icon text-on-primary-container" data-icon="park">park</span>
+</div>
+<div>
+<span class="inline-block px-4 py-1 bg-primary-fixed text-on-primary-fixed font-bold rounded-full text-sm mb-4">Morning Ritual</span>
+<h3 class="text-4xl font-bold text-on-surface leading-snug">Morning Walk in the Garden</h3>
+<p class="text-xl text-on-surface-variant mt-2">15-minute gentle stroll to enjoy the fresh air and flowers.</p>
+</div>
+</div>
+<button class="bg-gradient-to-r from-primary to-primary-container text-on-primary px-12 py-8 rounded-full flex items-center gap-4 text-3xl font-extrabold shadow-xl hover:scale-105 active:scale-95 transition-all">
+<span class="material-symbols-outlined huge-icon" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                    Mark Done
+                </button>
+</div>
+<!-- Task Card 2 -->
+<div class="bg-surface-container-lowest rounded-xl p-10 task-card-active flex flex-col md:flex-row items-center justify-between gap-8 shadow-[0_10px_30px_rgba(28,28,25,0.05)] transition-transform hover:translate-y-[-4px]">
+<div class="flex items-center gap-10 flex-1">
+<div class="w-32 h-32 rounded-full bg-secondary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined huge-icon text-on-secondary-container" data-icon="medical_services">medical_services</span>
+</div>
+<div>
+<span class="inline-block px-4 py-1 bg-secondary-fixed text-on-secondary-fixed font-bold rounded-full text-sm mb-4">Health Check</span>
+<h3 class="text-4xl font-bold text-on-surface leading-snug">Check Blood Pressure</h3>
+<p class="text-xl text-on-surface-variant mt-2">Use the arm cuff. Target range: 120/80 or as discussed with Dr. Smith.</p>
+</div>
+</div>
+<button class="bg-gradient-to-r from-primary to-primary-container text-on-primary px-12 py-8 rounded-full flex items-center gap-4 text-3xl font-extrabold shadow-xl hover:scale-105 active:scale-95 transition-all">
+<span class="material-symbols-outlined huge-icon" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                    Mark Done
+                </button>
+</div>
+<!-- Completed Task (Visual separation by tone, no border) -->
+<div class="bg-surface-container-low/50 rounded-xl p-10 flex flex-col md:flex-row items-center justify-between gap-8 opacity-70 grayscale-[0.5]">
+<div class="flex items-center gap-10 flex-1">
+<div class="w-32 h-32 rounded-full bg-surface-container-highest flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined huge-icon text-on-surface-variant" data-icon="pill">pill</span>
+</div>
+<div>
+<span class="inline-block px-4 py-1 bg-surface-container-highest text-on-surface-variant font-bold rounded-full text-sm mb-4">Completed 8:00 AM</span>
+<h3 class="text-4xl font-bold text-on-surface-variant leading-snug line-through">Take Breakfast Medication</h3>
+<p class="text-xl text-on-surface-variant mt-2">Morning vitamins and prescribed daily heart tablet.</p>
+</div>
+</div>
+<div class="flex items-center gap-4 text-secondary text-2xl font-bold">
+<span class="material-symbols-outlined huge-icon" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+                    Completed
+                </div>
+</div>
+</div>
+<!-- Support Section - Asymmetric Editorial Layout -->
+<div class="w-full mt-24 grid grid-cols-12 gap-8 items-center">
+<div class="col-span-12 md:col-span-7 bg-primary-container text-on-primary-container p-12 rounded-xl relative overflow-hidden">
+<div class="relative z-10">
+<h4 class="text-4xl font-bold mb-6">Need a hand with your tasks?</h4>
+<p class="text-xl mb-8 opacity-90 max-w-md">Your Care Circle is just a button away. We can notify Sarah or Michael if you need help with your morning routine.</p>
+<button class="bg-surface-container-lowest text-primary px-10 py-5 rounded-full font-extrabold text-xl shadow-lg hover:bg-white transition-all">
+                        Call Care Circle
+                    </button>
+</div>
+<!-- Decorative Circle -->
+<div class="absolute -right-20 -bottom-20 w-80 h-80 bg-primary rounded-full opacity-30"></div>
+</div>
+<div class="col-span-12 md:col-span-5 aspect-square rounded-xl overflow-hidden shadow-2xl relative group">
+<img alt="Happy senior with garden background" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A serene outdoor garden scene with lush foliage and soft dappled sunlight, creating a tranquil and healthy atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzDmaCPVWJLGeYfparsdnUKIU9v4qQosuasi4kOvM1KS3CxAHQw5nlOvoV4Z2dt_YvYGP4wpt9p3uS_UyfDxrdjKY4fJpXMhg00__4oZfj4B0-y6H5_m1Kyf5GLla5BXdAPd6yjKg6S2E1kf0Biiwwcspc8eAv2UF1E-3Fa93gCj7JmN08xTNk2ynkVcVuHU_NAg33QGNvVuIq_s7B2X28eVf-XDT3GTBdylwGGHyh4H38A13FtzaTKPFLUqDMKdsntQsahHQOoxY"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent"></div>
+<div class="absolute bottom-8 left-8 right-8">
+<p class="text-white text-2xl font-bold">"Spending time in the garden lowers blood pressure naturally."</p>
+<p class="text-primary-fixed-dim mt-2">— Health Tip of the Day</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Contextual FAB (Only for Main Task View) -->
+<button class="fixed bottom-12 right-12 w-20 h-20 bg-secondary text-on-secondary rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-90 transition-all z-50">
+<span class="material-symbols-outlined text-4xl" data-icon="add">add</span>
+</button>
+</body></html>
